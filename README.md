@@ -29,6 +29,7 @@ All designs run within OpenLANE are extracted from the openlane/designs folder:
 
 This command runs Yosys simulator and ABC
 
+
 ## Day 2 Chip Floorplanning and Standard Cells
 In Floorplanning we typically set the:
 1. Die Area
@@ -84,6 +85,66 @@ To do placement in OpenLANE:
 
 ![image](https://user-images.githubusercontent.com/127513356/224349984-26aee50c-36a8-4283-8cbd-d3ab9a029e5b.png)
 
-For placement to converge the overflow value needs to be converging to 0. At the end of placement cell legalization will be reported:
+
 
 ### Viewing Placement in Magic
+We use the same command as before to view the placement in Magic
+
+![image](https://user-images.githubusercontent.com/127513356/224395570-ef8fff18-510b-4829-9106-dd6eb1296ea9.png)
+
+![image](https://user-images.githubusercontent.com/127513356/224395870-c80c95a5-ca7e-4aa6-aaa3-376da27a3367.png)
+
+### Standard Cell Design Flow
+Cell design is done in 3 parts:
+
+1. Inputs - PDKs (Process design kits), DRC & LVS rules, SPICE models, library & user-defined specs.
+2. Design Steps - Design steps of cell design involves Circuit Design, Layout Design, Characterization. The software GUNA used for characterization. The characterization can be classified as Timing characterization, Power characterization and Noise characterization.
+3. Outputs - Outputs of the Design are CDL (Circuit Description Language), GDSII, LEF, extracted Spice netlist (.cir), timing, noise, power.libs, function.
+
+
+### Standard Cell Characterization
+Standard Cell Libraries consist of cells with different functionality/drive strength. These cells need to be characterized in liberty files to be used by synthesis tools to determine optimal circuit arrangement. The open-source software GUNA is used for characterization.
+
+Characterization is a well-defined flow consisting of the following steps:
+
+1. Link Model File of CMOS containing property definitions
+2. Specify process corner(s) for the cell to be characterized
+3. Specify cell delay and slew thresholds percentages
+4. Specify timing and power tables
+5. Read the parasitic extracted netlist
+6. Apply input or stimulus
+7. Provide necessary simulation commands
+
+## Day 3 Design Library Cell
+
+### Spice Simulations
+To simulate standard cells spice deck wrappers will need to be created around our model files.
+SPICE deck will comprise of:
+
+1. Component connectivity, including substrate taps
+2. Output load capacitance
+3. Component values
+4. Node names
+5. Simulation commands
+6. Model include statements
+
+To plot the output waveform of the spice deck we will use ngspice. The steps to run the simulation on ngpice are as follows:
+
+1. Source the .cir spice deck file
+2. Run the spice file by: run
+3. Run: setplot → allows you to view any plots possible from the simulations specified in the spice deck
+4. Select the simulation desired by entering the simulation name in the terminal
+5. Run: display to see nodes available for plotting
+6. Run: plot  vs  to obtain output waveform
+
+
+### Switching Threshold of a CMOS Inverter
+CMOS cells have three modes of operation:
+
+1. Cutoff - No inversion
+2. Triode - Inversion but no pinchoff in channel
+3. Saturation - Inversion and pinchoff in channel
+
+The voltages at which the switch between the modes of operation happens is dependent on the threshold voltage of the device(s). Threshold voltage is a function of the W/L ratio of a device, therefore varying the W/L ratio will vary the output waveform of CMOS devices.
+
+To enable efficient description of the varying waveforms a single parameter called switching threshold is used. Switching threshold is defined at the intersection of Vin = Vout. A perfectly symmetrical device will have a switching threshold such that Vin = Vout = VDD/2.
