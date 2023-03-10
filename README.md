@@ -148,3 +148,49 @@ CMOS cells have three modes of operation:
 The voltages at which the switch between the modes of operation happens is dependent on the threshold voltage of the device(s). Threshold voltage is a function of the W/L ratio of a device, therefore varying the W/L ratio will vary the output waveform of CMOS devices.
 
 To enable efficient description of the varying waveforms a single parameter called switching threshold is used. Switching threshold is defined at the intersection of Vin = Vout. A perfectly symmetrical device will have a switching threshold such that Vin = Vout = VDD/2.
+
+### 16 Mask CMOS Process Steps
+
+1. Substrate Selection : Selection of base layer on which other regions will be formed.
+2. Create an active region for transistors : SiO2 and Si3N2 deposited. Pockets created using photoresist and lithography.
+3. Nwell & Pwell formation : Pwell uses boron and nwell uses phosphorus. Drive in diffusion by placing it in a high temperature furnace.
+4. Creating Gate terminal : For desired threshold value NA (doping Concentration) and Cox to be set.
+5. Lightly Doped Drain (LDD) formation : LDD done to avoid hot electron effect and short channel effect.
+6. Source and Drain formation : Forming the source and drain.
+7. Contacts & local interconnect Creation : SiO2 removed using HF etch. Titanium deposited using sputtering.
+8. Higher Level metal layer formation : Upper layers of metals deposited.
+
+
+### Magic Layout View of Inverter Standard Cell
+
+
+![image](https://user-images.githubusercontent.com/127513356/224404497-120bc3dd-2c43-4b6a-ab25-dd8311585afa.png)
+
+![image](https://user-images.githubusercontent.com/127513356/224405933-d6711e4a-7c64-40a7-981e-a2c909d92da9.png)
+
+![image](https://user-images.githubusercontent.com/127513356/224406093-9847439f-e0eb-47c5-8c30-0b430cb9e6de.png)
+
+### Magic Key Features:
+
+1. Color Palette - Defines layers and associated colors continuous DRC
+2. Device Inference - Automatic recognition of NMOS and PMOS devices
+
+### Device Inference
+We can select the specific layer/device by hovering over the object and pressing, s, until we traverse the hierarchy to the desired object.
+![image](https://user-images.githubusercontent.com/127513356/224407026-27fe7458-c480-46b8-9608-d8287dcdd605.png)
+
+### Parasitics Extraction with Magic
+To extract the parasitic spice file for the associated layout one needs to create an extraction file:
+
+![image](https://user-images.githubusercontent.com/127513356/224407541-0fb02853-3f99-4f90-bd6e-e3d4550b55fe.png)
+
+After generating the extracted file we need to output the .ext file to a spice file:
+![image](https://user-images.githubusercontent.com/127513356/224408025-144c5a95-e401-40a8-a0a1-da012ca62d92.png)
+
+![image](https://user-images.githubusercontent.com/127513356/224408168-ddf27736-aaea-48c7-b7c7-5f37a7618668.png)
+
+![image](https://user-images.githubusercontent.com/127513356/224408527-6bfc780f-c144-4cd0-a12b-55f056ab79d8.png)
+
+### Spice Wrapper for simulation
+![image](https://user-images.githubusercontent.com/127513356/224417911-f30a8485-de84-4b17-88da-fa87bf69b2c8.png)
+
