@@ -185,6 +185,7 @@ To extract the parasitic spice file for the associated layout one needs to creat
 ![image](https://user-images.githubusercontent.com/127513356/224407541-0fb02853-3f99-4f90-bd6e-e3d4550b55fe.png)
 
 After generating the extracted file we need to output the .ext file to a spice file:
+
 ![image](https://user-images.githubusercontent.com/127513356/224408025-144c5a95-e401-40a8-a0a1-da012ca62d92.png)
 
 ![image](https://user-images.githubusercontent.com/127513356/224408168-ddf27736-aaea-48c7-b7c7-5f37a7618668.png)
@@ -222,6 +223,7 @@ Magic allows users to generate cell LEF information directly from the Magic term
 ![image](https://user-images.githubusercontent.com/127513356/224421479-7d8d2eef-da45-48c3-84db-d9faa1e6fc3c.png)
 
 Generated cell LEF file:
+
 ![image](https://user-images.githubusercontent.com/127513356/224421700-271db341-ccfb-4da5-895d-defb1a8ab5a8.png)
 
 ### Including Custom Cells in OpenLANE
@@ -230,4 +232,6 @@ In order to include the new cells in OpenLANE we need to do some initial configu
 1. Fully characterize new cell with GUNA for specified corners
 2. Include cell level liberty file in top level liberty file
 3. Reconfigure synthesis switches in the config.tcl file:
+
+![image](https://user-images.githubusercontent.com/127513356/224429955-410b21b1-c08c-413f-88ca-3c0b08f0708f.png)
 
