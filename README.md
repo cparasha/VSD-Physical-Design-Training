@@ -202,7 +202,7 @@ The plot can be viewed by plotting the output vs time while sweeping the input:
 ![image](https://user-images.githubusercontent.com/127513356/224424104-951de615-46fd-4163-b395-39d31f163f3c.png)
 
 
-## Day 4 Layout Timing Analysis and CTS
+## Day 4 - Layout Timing Analysis and CTS
 
 #### STA Fundamentals
 All real cells have finite propagation delays. This can be found from the dotLIB file of a cell, which contains propagation delay value for several combinations of input_slew and output_load.
