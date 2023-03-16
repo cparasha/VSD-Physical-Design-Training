@@ -295,11 +295,47 @@ In order to include the new cells in OpenLANE we need to do some initial configu
 Timing violation is verified by:
 ![image](https://user-images.githubusercontent.com/127513356/225740846-f6af69b8-2f34-4139-877d-b739a75e8350.png)
 
+
 Next run floorplan and placement commands, and view def in magic:
-![image](https://user-images.githubusercontent.com/127513356/225742595-e8d6f21d-0716-4736-9a45-65b2fdf8626e.png)
+
+c![image](https://user-images.githubusercontent.com/127513356/225742595-e8d6f21d-0716-4736-9a45-65b2fdf8626e.png)
 
 ![image](https://user-images.githubusercontent.com/127513356/225744643-0e0bff74-c235-4451-9dc5-5348dfb28a4c.png)
 
 ![image](https://user-images.githubusercontent.com/127513356/225745776-14d83ec6-1700-4779-8529-eabe9d4cf36b.png)
 
 #### Post-CTS STA Analysis
+
+Perform STA analysis on typical corner using openROAD. Use cts.netlist.
+![image](https://user-images.githubusercontent.com/127513356/225758852-fa8efc3a-a94c-4b26-a761-a35a44970435.png)
+
+![image](https://user-images.githubusercontent.com/127513356/225759528-d6716846-5220-4688-b70d-baa89b09334f.png)
+
+![image](https://user-images.githubusercontent.com/127513356/225759372-bed741eb-914d-44cd-8c4d-4dd1d5fb275d.png)
+
+### Routing | Day 5
+
+Now that we are done with CTS, we start the routing stage by generating out power delivery network as per the pitch and width values from the track.info file.
+To run it simply run below command in openlane shell:
+gen_pdn
+![image](https://user-images.githubusercontent.com/127513356/225761592-6ea1280e-4aeb-4fa4-9723-b7356bcee822.png)
+
+
+
+Peform routing using the command run_routing. Once routing is complete, open DEF to see changes:
+![image](https://user-images.githubusercontent.com/127513356/225763955-4cdf764e-22e1-481f-a155-1210fa253e24.png)
+
+![image](https://user-images.githubusercontent.com/127513356/225764701-d376fc4b-df0c-48c4-b82d-f83767bca2cf.png)
+
+
+![image](https://user-images.githubusercontent.com/127513356/225764826-64945243-c873-47f6-ba18-7a964f990972.png)
+
+SPEF File obtained as an output of this stage -
+
+![image](https://user-images.githubusercontent.com/127513356/225765001-b2b6609c-91d4-4f68-82b8-e29f25a2527a.png)
+
+
+### Acknowledgements
+Sincere thanks to following people for organizing and conducting this Physical Design workshop:
+
+Kunal Ghosh, Nickson Jose, Dileesh Jostin
